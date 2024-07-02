@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interfaz RESTCONF</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+        }
+        .container {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+            padding: 20px;
+            width: 80%;
+            max-width: 600px;
+            text-align: center;
+        }
+        h2 {
+            color: #555;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+            color: #666;
+            text-align: left;
+        }
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        textarea {
+            resize: vertical;
+            height: 150px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Interfaz RESTCONF</h1>
+
+    <div class="container">
+        <h2>Obtener Interfaces</h2>
+        <form action="/get_interfaces" method="get">
+            <input type="submit" value="Obtener Interfaces">
+        </form>
+    </div>
+
+    <div class="container">
+        <h2>Obtener Datos de RESTCONF Native</h2>
+        <form action="/get_restconf_native" method="get">
+            <input type="submit" value="Obtener Datos Native">
+        </form>
+    </div>
+
+    <div class="container">
+        <h2>Obtener Banner MOTD</h2>
+        <form action="/get_banner" method="get">
+            <input type="submit" value="Obtener Banner">
+        </form>
+    </div>
+
+    <div class="container">
+        <h2>Actualizar Banner MOTD</h2>
+        <form action="/put_banner" method="post">
+            <label for="banner">Nuevo Banner:</label>
+            <input type="text" id="banner" name="banner" required>
+            <input type="submit" value="Actualizar Banner">
+        </form>
+    </div>
+
+    <div class="container">
+        <h2>Agregar Interfaz Loopback</h2>
+        <form action="/post_loopback" method="post">
+            <label for="loopback_name">Nombre de Loopback:</label>
+            <input type="text" id="loopback_name" name="loopback_name" value="Loopback100" required>
+
+            <label for="description">Descripción:</label>
+            <input type="text" id="description" name="description" value="Configured by RESTCONF" required>
+
+            <label for="ip">Dirección IP:</label>
+            <input type="text" id="ip" name="ip" value="172.16.100.1" required>
+
+            <label for="netmask">Máscara de Red:</label>
+            <input type="text" id="netmask" name="netmask" value="255.255.255.0" required>
+
+            <input type="submit" value="Agregar Loopback">
+        </form>
+    </div>
+
+    <div class="container">
+        <h2>Eliminar Interfaz Loopback</h2>
+        <form action="/del_loopback" method="post">
+            <label for="loopback_name_del">Nombre de Loopback a Eliminar:</label>
+            <input type="text" id="loopback_name_del" name="loopback_name_del" value="Loopback100" required>
+            <input type="submit" value="Eliminar Loopback">
+        </form>
+    </div>
+
+    <div class="container">
+        <h2>Obtener Configuración del Enrutador</h2>
+        <form action="/get_router_config" method="get">
+            <input type="submit" value="Obtener Configuración">
+        </form>
+    </div>
+
+<div class="container">
+    <h2>Agregar Red RIP</h2>
+    <form action="/add_network" method="post">
+        <label for="add_network_ip">Dirección IP de la Red:</label>
+        <input type="text" id="add_network_ip" name="network_ip" value="192.168.1.0" required>
+        <input type="submit" value="Agregar Red">
+    </form>
+</div>
+
+<div class="container">
+    <h2>Eliminar Red RIP</h2>
+    <form action="/remove_network" method="post">
+        <label for="remove_network_ip">Dirección IP de la Red a Eliminar:</label>
+        <input type="text" id="remove_network_ip" name="network_ip" value="10.0.0.0" required>
+        <input type="submit" value="Eliminar Red">
+    </form>
+</div>
+
+
+</body>
+</html>
+
