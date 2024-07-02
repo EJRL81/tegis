@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify, render_template
 import json
 import requests
-
+import subprocess
 app = Flask(__name__)
 
 requests.packages.urllib3.disable_warnings()
@@ -155,6 +155,20 @@ def remove_network():
     except Exception as e:
         return jsonify({"error": f"Error al procesar la solicitud: {str(e)}"}), 500
 
+
+@app.route('/test_connectivity', methods=['POST'])
+def test_connectivity():
+    try:
+        target_ip = request.form['target_ip']
+        response = subprocess.run(['ping', '-c', '4', target_ip], stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+                                  text=True)
+
+        if response.returncode == 0:
+            return jsonify({"message": f"Conectividad exitosa con {target_ip}", "output": response.stdout})
+        else:
+            return jsonify({"error": f"Error en la conectividad con {target_ip}", "output": response.stderr}), 400
+    except Exception as e:
+        return jsonify({"error": f"Error al realizar la prueba de conectividad: {str(e)}"}), 500
 
 if __name__ == '__main__':
     app.run(debug=True)

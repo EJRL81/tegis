@@ -1,0 +1,10 @@
+{
+    "dns": {
+        "geo": "United States - Google LLC",
+        "ip": "172.253.251.38"
+    },
+    "edns": {
+        "geo": "Mexico - Uninet S.A. de C.V.",
+        "ip": "187.228.157.0"
+    }
+}

@@ -1,0 +1,29 @@
+[
+    {
+        "api": {
+            "enabled": true
+        },
+        "cloud": {
+            "region": {
+                "host": {
+                    "name": "United States"
+                },
+                "name": "North America"
+            }
+        },
+        "id": "1215707",
+        "licensing": {
+            "model": "co-term"
+        },
+        "management": {
+            "details": [
+                {
+                    "name": "customer number",
+                    "value": "03486604"
+                }
+            ]
+        },
+        "name": "API Demo Organization",
+        "url": "https://n394.meraki.com/o/Yja5Xd/manage/organization/overview"
+    }
+]

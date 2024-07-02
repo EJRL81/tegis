@@ -1,0 +1,13 @@
+{
+    "router": [
+        {
+            "modelo": "CAT4223"
+        }
+    ],
+    "switch": [
+        {
+            "name": "CR2323",
+            "vendor": "cisco"
+        }
+    ]
+}
